@@ -43,9 +43,8 @@ class NodeForEth {
 
    	$cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ./js/get-balance.js  '.$address.' '.$this->net.' 2>&1');
 
-    	//if debug is enabled then print the result taken from js file
     	if ( $this->debug == true )
-      	echo $cmd;
+      		echo $cmd;
 
 	//cmd result = "Password:1.3455555555.55555ecc" -> needed to be splitted   ( 'error' = error )
 	$result = explode( ":" , $cmd );
@@ -61,7 +60,6 @@ class NodeForEth {
 
     	$cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ./js/create-wallet.js '.$this->net.' 2>&1');
 
-    	//if debug is enanle then print the reslult taken from js file
     	if ( $this->debug == true )
       		echo $cmd;
 
