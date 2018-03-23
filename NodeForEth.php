@@ -39,40 +39,40 @@ class NodeForEth {
   *
   * @param String  $address of which you want to get the balance
   */
-	public function getBalance ( $address ){
+   public function getBalance ( $address ){
 
-		$cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ./js/get-balance.js  '.$address.' '.$this->net.' 2>&1');
+   	$cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ./js/get-balance.js  '.$address.' '.$this->net.' 2>&1');
 
-    //if debug is enabled then print the result taken from js file
-    if ( $this->debug == true )
-      echo $cmd;
+    	//if debug is enabled then print the result taken from js file
+    	if ( $this->debug == true )
+      	echo $cmd;
 
-		//cmd result = "Password:1.3455555555.55555ecc" -> needed to be splitted   ( 'error' = error )
-		$result = explode( ":" , $cmd );
+	//cmd result = "Password:1.3455555555.55555ecc" -> needed to be splitted   ( 'error' = error )
+	$result = explode( ":" , $cmd );
 
-		return $result[1];
-	}
+	return $result[1];
+   }
 
 
-	/**
-  * Create a wallet
-  */
-	public function createWallet ( ){
+    /**
+    * Create a wallet
+    */
+    public function createWallet ( ){
 
-		$cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ./js/create-wallet.js '.$this->net.' 2>&1');
+    	$cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ./js/create-wallet.js '.$this->net.' 2>&1');
 
-    //if debug is enanle then print the reslult taken from js file
-    if ( $this->debug == true )
-      echo $cmd;
+    	//if debug is enanle then print the reslult taken from js file
+    	if ( $this->debug == true )
+      		echo $cmd;
 
-		$explode = explode( "'" , $cmd );
-		$address = $explode[1];
-		$private_key = $explode[3];
+	$explode = explode( "'" , $cmd );
+	$address = $explode[1];
+	$private_key = $explode[3];
 
-		$result['address'] = $address;
-		$result['private_key'] = $private_key;
-		return $result;
-	}
+	$result['address'] = $address;
+	$result['private_key'] = $private_key;
+	return $result;
+  }
 
   /**
   * Send tx to a an address
@@ -83,17 +83,17 @@ class NodeForEth {
   */
   public function sendTx ( $address_src , $pr_key_src , $address_dst , $n_token ){
 
-    $cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ./js/send-tx.js '
+  	$cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ./js/send-tx.js '
                        .$this->net.' '.$address_src.' '.$pr_key_src.' '.$address_dst.' '
                        .$n_token. ' 2>&1');
 
-    if ( $this->debug == true )
-      echo $cmd;
+    	if ( $this->debug == true )
+      		echo $cmd;
 
-    //cmd result = "Password:0x44hb4h4b4h4b4h4bh4b4h4b4h" -> needed to be splitted   ( 'error' = error )
-    $result = explode( ":" , $cmd );
+    	//cmd result = "Password:0x44hb4h4b4h4b4h4bh4b4h4b4h" -> needed to be splitted   ( 'error' = error )
+    	$result = explode( ":" , $cmd );
 
-    return $result[1];
+    	return $result[1];
   }
 
 }
