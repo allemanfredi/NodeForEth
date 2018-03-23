@@ -90,7 +90,7 @@ class NodeForEth {
     if ( $this->debug == true )
       echo $cmd;
 
-    //cmd result = "Password:1.3455555555.55555ecc" -> needed to be splitted   ( 'error' = error )
+    //cmd result = "Password:0x44hb4h4b4h4b4h4bh4b4h4b4h" -> needed to be splitted   ( 'error' = error )
     $result = explode( ":" , $cmd );
 
     return $result[1];
