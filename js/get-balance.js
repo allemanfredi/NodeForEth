@@ -6,10 +6,10 @@ var net = process.argv[3];
 web3 = new Web3(new Web3.providers.HttpProvider(net));
 
 var addr = (process.argv[2]);
-web3.eth.getBalance(addr, function (error, result) {
-	if (!error){
-		console.log(web3.fromWei(result.valueOf(), 'ether'));
-	}
-	else
-		console.log('error');
-});
+try{
+	var res = web3.eth.getBalance(addr);
+	console.log(web3.fromWei(res.valueOf(), 'ether'));
+
+}catch(err){
+	console.log('error:' + err.message);
+}
