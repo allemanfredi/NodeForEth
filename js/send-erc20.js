@@ -51,8 +51,7 @@ try{
       "data": data,
       "chainId": 0x04
   };
-
-
+  
   const transaction = new EthereumTx(details)
 
   transaction.sign( Buffer.from(private_key, 'hex') )
