@@ -1,7 +1,5 @@
 const Web3 = require('web3')
 const EthereumTx = require('ethereumjs-tx')
-const axios = require('axios')
-
 
 var address = process.argv[3]
 var private_key = process.argv[4]
