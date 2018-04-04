@@ -3,7 +3,7 @@
   include_once dirname(__FILE__) . '/NodeForEth.php';
 
   $debug = false;
-  $NodeForEth = new NodeForEth($debug , 'Ktmsxf2502015' ,'https://rinkeby.infura.io/QQghNfFwGsfvd2rA8mjp' , '/usr/local/bin/node' );
+  $NodeForEth = new NodeForEth($debug , 'your password' ,'https://rinkeby.infura.io/QQghNfFwGsfvd2rA8mjp' , '/usr/local/bin/node' );
   $result = $NodeForEth->getBalance('0x9596f1439576e0142976F0822883DE62e326B542');
 
   if (  trim($result[1] ) === "error" ){
