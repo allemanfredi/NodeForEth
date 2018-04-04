@@ -49,7 +49,7 @@ try{
 }
 catch(err){
   //exception handling
-  if ( err.message = 'The field to must have byte length of 20')
+  if ( err.message === 'The field to must have byte length of 20')
     console.log("error: Invalid address")
   return;
 }
