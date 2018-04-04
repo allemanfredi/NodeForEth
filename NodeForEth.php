@@ -93,6 +93,29 @@ class NodeForEth {
 
     	return $result[1];
   }
+	
+	
+  /**
+  * Send tx to a an address
+  * @param String  $address_src address source
+  * @param String  $pr_key_src private key of who want to send tokens
+  * @param String  $address where will be sent the tokens
+  * @param String  $contract_address
+  * @param Float   $n_token : amount of token you want to send
+  */
+  public function sendERC20 ( $address_src , $pr_key_src , $address_dst , $contract_address ,$n_token ){
+
+    $cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ../node/js/send-erc20.js '
+                       .$this->net.' '.$address_src.' '.$pr_key_src.' '.$address_dst.' '
+                       .' '.$contract_address.' '.$n_token. ' 2>&1');
+
+    if ( $this->debug == true )
+      echo $cmd;
+
+    $result = explode( ":" , $cmd );
+
+    return $result;
+  }
 
 }
 ?>
