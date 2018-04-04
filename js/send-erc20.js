@@ -15,11 +15,7 @@ const web3 = new Web3( new Web3.providers.HttpProvider(net) )
 web3.eth.defaultAccount = address;
 
 try{
-  let myBalanceWei = web3.eth.getBalance(web3.eth.defaultAccount).toNumber()
-  let myBalance = web3.fromWei(myBalanceWei, 'ether')
-
-  //console.log('Your wallet balance is currently ' + myBalance + ' ETH')
-
+  
   let nonce = web3.eth.getTransactionCount(web3.eth.defaultAccount)
   //console.log('The outgoing transaction count for your wallet address is: ' + nonce )
 
