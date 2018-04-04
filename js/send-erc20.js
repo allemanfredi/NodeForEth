@@ -7,15 +7,12 @@ var fs = require('fs')
 var address = process.argv[3]
 var private_key = process.argv[4]
 var to = process.argv[5]
+var contractAddress = process.argv[6]
+var amountToSend = parseFloat(process.argv[7])
 
 const net = process.argv[2]//'https://rinkeby.infura.io/QQghNfFwGsfvd2rA8mjp '
 const web3 = new Web3( new Web3.providers.HttpProvider(net) )
 web3.eth.defaultAccount = address;
-
-var contractAddress = process.argv[6]
-
-//number of token to send
-var amountToSend = parseFloat(process.argv[7])
 
 try{
   let myBalanceWei = web3.eth.getBalance(web3.eth.defaultAccount).toNumber()
