@@ -34,9 +34,9 @@ try{
   var contract = web3.eth.contract(abiArray).at(contractAddress);
 
   //here i have to calculate the correct amunt of token that i want to send
-  amountToSend = amountToSend * 1000000000000000;
+  amountToSend = amountToSend * 100000000000000000000;
 
-  var data = contract.transfer.getData(contractAddress, amountToSend, {from: address});
+  var data = contract.transfer.getData(to, amountToSend, {from: address});
   var gasPrice = 3;
   var gasLimit = 90000;
 
@@ -46,12 +46,13 @@ try{
       "nonce": "0x" + nonce.toString(16),
       "gasPrice": gasPrice * 1000000000,
       "gasLimit": gasLimit,
-      "to": to,
+      "to": contractAddress,
       "value": "0x0",
       "data": data,
       "chainId": 0x04
   };
-  
+
+
   const transaction = new EthereumTx(details)
 
   transaction.sign( Buffer.from(private_key, 'hex') )
