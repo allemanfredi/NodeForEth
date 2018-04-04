@@ -51,6 +51,26 @@ class NodeForEth {
 
 	return $result[1];
    }
+	
+
+   /**
+   * Get Balance  given an address of a specific erc20 token identified by its address
+   *
+   * @param String  $address of which you want to get the balance
+   * @param String  $contract address
+   */
+   public function getBalanceERC20 ( $address , $contract_address ){
+	
+	$cmd = shell_exec('echo '.$this->psw.' | sudo -S '.$this->nodePath.' ../node/js/get-balance-erc20.js  '.$address.' '.$contract_address.' '.$this->net.' 2>&1');
+
+        //if debug is enanle then print the reslult taken from js file
+        if ( $this->debug == true )
+      		echo $cmd;
+
+	$result = explode( ":" , $cmd );
+
+    	return $result;
+     }
 
 
     /**
