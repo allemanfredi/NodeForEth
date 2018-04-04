@@ -46,7 +46,7 @@ try{
       "nonce": "0x" + nonce.toString(16),
       "gasPrice": gasPrice * 1000000000,
       "gasLimit": gasLimit,
-      "to": contractAddress,
+      "to": to,
       "value": "0x0",
       "data": data,
       "chainId": 0x04
