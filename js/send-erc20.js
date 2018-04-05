@@ -20,7 +20,7 @@ try{
   //console.log('The outgoing transaction count for your wallet address is: ' + nonce )
 
   // This file is just JSON stolen from the contract page on etherscan.io under "Contract ABI"
-  var abiArray = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../token/matoken-abi.json'), 'utf-8'));
+  var abiArray = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../token/token-abi.json'), 'utf-8'));
 
   // This is the address of the contract which created the ERC20 token
   //var contractAddress = "0x4C20aEa100612472BB598A789c6b1D43B88cee55";
