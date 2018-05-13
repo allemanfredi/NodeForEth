@@ -1,3 +1,9 @@
+/**
+ * User: alle.manfredi
+ * Date: 12/04/2018
+ * Time: 21:27
+ */
+
 const Web3 = require('web3')
 const EthereumTx = require('ethereumjs-tx')
 
@@ -13,14 +19,23 @@ const web3 = new Web3( new Web3.providers.HttpProvider(net) )
 
 try{
 
-  // This file is just JSON stolen from the contract page on etherscan.io under "Contract ABI"
   var abiArray = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../token/matoken-abi.json'), 'utf-8'));
 
-  var contract = web3.eth.contract(abiArray).at(contractAddress);
+  //get the balance
+  var contract = new web3.eth.Contract(abiArray,contractAddress);
 
-  var balance = contract.balanceOf( address)
-  balance = web3.fromWei(balance.valueOf(), 'ether')
-  console.log(balance)
+  contract.methods.balanceOf(address).call().then(function(result){
+    //the result holds your Token Balance that you can assign to a var
+    var balance = result;
+    balance = web3.utils.fromWei(balance, 'ether')
+    console.log(balance)
+  });
+
+  /*var balance = contract.methods.balanceOf(address)
+  console.log(balance.valueOf())
+  balance = web3.utils.fromWei(String(balance.valueOf()), 'ether')
+  console.log(balance)*()*/
+
 
 }catch(err){
   //exception handling
