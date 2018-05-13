@@ -30,13 +30,7 @@ try{
     balance = web3.utils.fromWei(balance, 'ether')
     console.log(balance)
   });
-
-  /*var balance = contract.methods.balanceOf(address)
-  console.log(balance.valueOf())
-  balance = web3.utils.fromWei(String(balance.valueOf()), 'ether')
-  console.log(balance)*()*/
-
-
+  
 }catch(err){
   //exception handling
   console.log(err)
